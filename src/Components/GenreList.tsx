@@ -2,7 +2,6 @@ import useGenres, { Genre } from "../Hooks/useGenres";
 import {
   List,
   HStack,
-  Text,
   ListItem,
   Image,
   Spinner,
