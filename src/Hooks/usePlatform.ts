@@ -12,11 +12,11 @@ export interface Platform {
 const usePlatforms = () => {
   const apiClient = new ApiClient<Platform>("/platforms/lists/parents");
 
-  return useQuery<FetchResponse<Platform>>({
+  return useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
     staleTime: Infinity,
-    initialData: { count: platform.length, results: platform },
+    initialData: { count: platform.length, results: platform, next: null },
   });
 };
 
