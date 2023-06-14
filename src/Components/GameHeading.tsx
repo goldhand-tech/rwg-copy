@@ -1,9 +1,5 @@
 import { Heading } from "@chakra-ui/react";
 import { GameQuery } from "../App";
-import useGenres from "../Hooks/useGenres";
-import { FetchResponse } from "../Services/api-client";
-import { Genre } from "../Hooks/useGenres";
-import usePlatforms, { Platform } from "../Hooks/usePlatform";
 import getPlatform from "../Hooks/getPlatform";
 import getGenre from "../Hooks/getGenres";
 interface Props {
