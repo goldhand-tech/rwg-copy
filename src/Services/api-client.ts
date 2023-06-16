@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { Game } from "../Hooks/useGames";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
@@ -23,6 +24,12 @@ class ApiClient<T> {
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endPoint, config)
+      .then((res) => res.data);
+  };
+
+  get = (id: string | number) => {
+    return axiosInstance
+      .get<T>(this.endPoint + "/" + id)
       .then((res) => res.data);
   };
 }

@@ -6,6 +6,7 @@ import { CreditScore } from "./CreditScore";
 import { HStack } from "@chakra-ui/react";
 import getCroppedImageUrl from "../Services/images-url";
 import { Emoji } from "./Emoji";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -13,7 +14,14 @@ interface Props {
 
 export const GameCard = ({ game }: Props) => {
   return (
-    <Card borderRadius={10} overflow={"hidden"}>
+    <Card
+      _hover={{
+        transform: "scale(1.03)",
+        transition: "transform .15s ease-in",
+      }}
+      borderRadius={10}
+      overflow={"hidden"}
+    >
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <HStack justifyContent="space-between" marginBottom={3}>
@@ -22,8 +30,10 @@ export const GameCard = ({ game }: Props) => {
           ></PlatformIconList>
           <CreditScore score={game.metacritic}></CreditScore>
         </HStack>
-        <Heading fontSize="2xl">{game.name}</Heading>
-        <Emoji rating={game.rating_top}></Emoji>
+        <Heading fontSize={"2xl"}>
+          <Link to={"/games/" + game.slug}>{game.name}</Link>
+          <Emoji rating={game.rating_top}></Emoji>
+        </Heading>
       </CardBody>
     </Card>
   );
