@@ -3,15 +3,13 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import { GameCard } from "./GameCard";
 import { GameCardSkeleton } from "./GameCardSkeleton";
 import { GameCardContainer } from "./GameCardContainer";
-import { GameQuery } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import useGameQueryStore from "../Hooks/useGameQuery";
 
-interface Props {
-  gameQuery: GameQuery;
-}
+export const GameGrid = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
 
-export const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading, hasNextPage, fetchNextPage } =
     useGames(gameQuery);
   // const skeleton = [1, 2, 3, 4, 5, 6];
